@@ -9,14 +9,14 @@ import numpy as np
 from utils import Utils
 utils = Utils()
 
-classesFile = ""
+classesFile = r"C:\Users\abilr\OneDrive\Desktop\dynamixel\Jetson-Nano-Object-Detection-Learn-main\Jetson-Nano-Object-Detection-Learn-main\pertemuan_4\object-detection.json"
 # classesFile = "coco.json"
 with open(classesFile) as json_labels :
     classes = json.load(json_labels)
 
 # load petrained model (.pb & .pbtxt) faster R-CNN with backbone Inception V2
-modelConfiguration = ""
-modelWeights = ""
+modelConfiguration = r"C:\Users\abilr\OneDrive\Desktop\dynamixel\Jetson-Nano-Object-Detection-Learn-main\Jetson-Nano-Object-Detection-Learn-main\pertemuan_4\yolov3-tiny.cfg"
+modelWeights = r"C:\Users\abilr\OneDrive\Desktop\dynamixel\Jetson-Nano-Object-Detection-Learn-main\Jetson-Nano-Object-Detection-Learn-main\pertemuan_4\yolov3-tiny-custom.weights"
 # modelConfiguration = "model/coco_yolov3-tiny copy.cfg"
 # modelWeights = "model/coco_yolov3-tiny copy.weights"
 net = cv2.dnn.readNetFromDarknet(modelConfiguration, modelWeights)
