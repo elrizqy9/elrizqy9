@@ -9,6 +9,13 @@ class Utils():
         x0, xt = max(x0 - 15, 0) , min(xt + 15, img.shape[1])
 
         (w, h), baseline = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, font_size, 1)
+        w1 = xt-x0
+        h1= yt-y0
+        x_center = x0 + int(w1/2)
+        y_center = y0 + int(h1/2)
+
+        text = "x: " + str(w1) + ", y: " + str(h1)
+
         cv2.rectangle(img,
                         (x0, y0 + baseline),  
                         (max(xt, x0 + w), yt), 
@@ -27,7 +34,9 @@ class Utils():
                     text_color,                
                     1,
                     cv2.LINE_AA)
-         
+        cv2.circle(img,(x_center,y_center),4,(0,255,0),-1)
+        cv2.putText(img, text, (w1 - 10, h1 - 10),
+            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
         return img
 
     def postprocess(self, outs, frame, classes, confThreshold = 0.5, nmsThreshold = 0.3, font_size=0.8, color_maps=None):
